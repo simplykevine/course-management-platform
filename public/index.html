@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Course Management Platform - Student Reflection Page">
+    <meta name="keywords" content="education, course, reflection, multilingual">
+    <title>Course Reflection - Student Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="fr">Français</button>
+        </div>
+
+        <!-- Header Section -->
+        <header>
+            <h1 id="page-title">Course Reflection</h1>
+            <p id="welcome-message">Welcome to your course reflection page</p>
+        </header>
+
+        <main>
+            <section class="reflection-section">
+                <h2 id="reflection-heading">Share Your Experience</h2>
+
+                <!-- Question 1 -->
+                <div class="question-block">
+                    <h3 id="question-1">What did you enjoy most about the course?</h3>
+                    <textarea id="answer-1" class="answer-textarea" rows="4"
+                        placeholder="Type your answer here..."></textarea>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-block">
+                    <h3 id="question-2">What was the most challenging part?</h3>
+                    <textarea id="answer-2" class="answer-textarea" rows="4"
+                        placeholder="Type your answer here..."></textarea>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-block">
+                    <h3 id="question-3">What could be improved?</h3>
+                    <textarea id="answer-3" class="answer-textarea" rows="4"
+                        placeholder="Type your answer here..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="submit-section">
+                    <button id="submit-btn" class="submit-button">Submit Reflection</button>
+                    <p id="submit-message" class="submit-message hidden"></p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p id="footer-text">© 2025 Course Management Platform. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
