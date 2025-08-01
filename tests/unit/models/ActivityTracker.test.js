@@ -5,8 +5,6 @@ describe('ActivityTracker Model', () => {
 
   beforeAll(async () => {
     await sequelize.sync({ force: true });
-    
-    // Create test dependencies
     const testModule = await Module.create({
       code: 'CS201',
       name: 'Data Structures',
@@ -101,7 +99,7 @@ describe('ActivityTracker Model', () => {
     it('should validate week number range', async () => {
       const logData = {
         allocationId: testCourseOffering.id,
-        weekNumber: 17, // Invalid (max is 16)
+        weekNumber: 17, 
         attendance: [true, true]
       };
 

@@ -103,12 +103,10 @@ module.exports = (sequelize) => {
       {
         fields: ['submitted_at']
       },
-      // Add composite index for common filtering queries
       {
         name: 'activity_status_week_idx',
         fields: ['week_number', 'submitted_at']
       },
-      // Add index for facilitator queries
       {
         name: 'activity_allocation_week_idx',
         fields: ['allocation_id', 'week_number', 'submitted_at']
@@ -116,7 +114,7 @@ module.exports = (sequelize) => {
     ]
   });
 
-  // Instance methods
+
   ActivityTracker.prototype.isComplete = function () {
     return this.formativeOneGrading === 'Done' &&
       this.formativeTwoGrading === 'Done' &&
@@ -126,6 +124,7 @@ module.exports = (sequelize) => {
       this.gradeBookStatus === 'Done' &&
       this.attendance.length > 0;
   };
+
 
   ActivityTracker.prototype.getCompletionPercentage = function () {
     const statuses = [
@@ -139,20 +138,24 @@ module.exports = (sequelize) => {
 
     const completed = statuses.filter(status => status === 'Done').length;
     const hasAttendance = this.attendance.length > 0 ? 1 : 0;
-
     return Math.round(((completed + hasAttendance) / 7) * 100);
+    
   };
+
+
 
   ActivityTracker.prototype.markSubmitted = async function () {
     this.submittedAt = new Date();
     await this.save();
   };
 
+
   ActivityTracker.prototype.incrementReminderCount = async function () {
     this.reminderCount += 1;
     this.lastReminderSent = new Date();
     await this.save();
   };
+
 
   return ActivityTracker;
 };

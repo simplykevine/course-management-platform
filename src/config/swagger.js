@@ -4,7 +4,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Course Management Platform API',
+      title: 'Course Management API',
       version: '1.0.0',
       description: 'A comprehensive backend system for academic institutions to manage course allocations, track facilitator activities, and monitor student progress.',
       contact: {

@@ -1,7 +1,6 @@
 const logger = require('../utils/logger');
 
 const errorHandler = (err, req, res, next) => {
-  // Log error with request context
   logger.error('Error:', {
     requestId: req.id,
     message: err.message,
@@ -13,14 +12,12 @@ const errorHandler = (err, req, res, next) => {
     body: req.method === 'POST' || req.method === 'PUT' ? req.body : undefined
   });
 
-  // Default error
   let error = {
     error: 'Internal Server Error',
     message: 'An unexpected error occurred'
   };
   let statusCode = 500;
 
-  // Sequelize validation error
   if (err.name === 'SequelizeValidationError') {
     statusCode = 400;
     error = {
@@ -33,7 +30,6 @@ const errorHandler = (err, req, res, next) => {
     };
   }
 
-  // Sequelize unique constraint error
   if (err.name === 'SequelizeUniqueConstraintError') {
     statusCode = 409;
     error = {
@@ -43,7 +39,6 @@ const errorHandler = (err, req, res, next) => {
     };
   }
 
-  // Sequelize foreign key constraint error
   if (err.name === 'SequelizeForeignKeyConstraintError') {
     statusCode = 400;
     error = {
@@ -52,7 +47,6 @@ const errorHandler = (err, req, res, next) => {
     };
   }
 
-  // JWT errors
   if (err.name === 'JsonWebTokenError') {
     statusCode = 401;
     error = {
@@ -69,7 +63,6 @@ const errorHandler = (err, req, res, next) => {
     };
   }
 
-  // Custom application errors
   if (err.statusCode) {
     statusCode = err.statusCode;
     error = {
@@ -78,7 +71,6 @@ const errorHandler = (err, req, res, next) => {
     };
   }
 
-  // Send error response
   res.status(statusCode).json(error);
 };
 

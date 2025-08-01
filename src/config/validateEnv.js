@@ -20,7 +20,6 @@ const validateEnvironment = () => {
     process.exit(1);
   }
   
-  // Validate JWT secrets are not default values
   if (process.env.JWT_SECRET === 'your-secret-key' || process.env.JWT_SECRET?.length < 32) {
     logger.error('JWT_SECRET must be a strong secret (at least 32 characters)');
     process.exit(1);

@@ -9,6 +9,7 @@ const notificationService = require("./src/services/notificationService")
 
 const PORT = process.env.PORT || 3000
 
+
 async function startServer() {
   try {
     await sequelize.authenticate()
@@ -36,14 +37,12 @@ async function startServer() {
 
     logger.info("Reminder cron job started")
 
-    // Start the server
     const server = app.listen(PORT, () => {
       logger.info(`Server is running on port ${PORT}`)
       logger.info(`API Documentation available at http://localhost:${PORT}/api-docs`)
       logger.info(`Student Reflection Page available at http://localhost:${PORT}/reflection`)
     })
 
-    // Graceful shutdown
     process.on('SIGTERM', async () => {
       logger.info('SIGTERM signal received: closing HTTP server')
       reminderJob.stop()
@@ -81,16 +80,19 @@ async function startServer() {
   }
 }
 
-// Handle uncaught exceptions
 process.on("uncaughtException", (error) => {
   logger.error("Uncaught Exception:", error)
   process.exit(1)
 })
 
-// Handle unhandled promise rejections
 process.on("unhandledRejection", (error) => {
   logger.error("Unhandled Rejection:", error)
   process.exit(1)
 })
 
-startServer()
+startServer().then(()=>{
+  console.log("Server started successfully")
+}).catch((error) => {
+  logger.error("Error starting server:", error)
+  process.exit(1)
+});

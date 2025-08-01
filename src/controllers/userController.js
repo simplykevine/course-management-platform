@@ -9,7 +9,6 @@ const getAllUsers = async (req, res) => {
     const offset = (page - 1) * limit
     const where = {}
 
-    // Apply filters
     if (role) where.role = role
     if (isActive !== undefined) where.isActive = isActive === "true"
     if (search) {

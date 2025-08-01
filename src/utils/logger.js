@@ -6,7 +6,6 @@ const logDir = 'logs';
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir);
 }
-
 const levels = {
   error: 0,
   warn: 1,
@@ -25,7 +24,6 @@ const colors = {
 
 winston.addColors(colors);
 
-// Define log format
 const format = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
   winston.format.errors({ stack: true }),
@@ -33,9 +31,7 @@ const format = winston.format.combine(
   winston.format.json()
 );
 
-// Define log transports
 const transports = [
-  // Console transport
   new winston.transports.Console({
     format: winston.format.combine(
       winston.format.colorize({ all: true }),
@@ -46,24 +42,22 @@ const transports = [
   })
 ];
 
-// Add file transport in production
 if (process.env.NODE_ENV === 'production') {
   transports.push(
     new winston.transports.File({
       filename: path.join(logDir, 'error.log'),
       level: 'error',
-      maxsize: 5242880, // 5MB
+      maxsize: 5242880, 
       maxFiles: 5
     }),
     new winston.transports.File({
       filename: path.join(logDir, 'combined.log'),
-      maxsize: 5242880, // 5MB
+      maxsize: 5242880, 
       maxFiles: 5
     })
   );
 }
 
-// Create logger instance
 const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'debug',
   levels,
