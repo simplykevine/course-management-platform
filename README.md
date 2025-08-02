@@ -56,7 +56,7 @@ Edit
 # Database
 DB_HOST=localhost
 DB_PORT=3306
-DB_NAME=dbdb
+DB_NAME=course_management_db
 DB_USER=root
 DB_PASSWORD=your_password
 
@@ -224,7 +224,7 @@ MIT License — see LICENSE
 🆘 Support & Troubleshooting
 Common Issues
 Verify MySQL:
-mysql -u root -p -e "SHOW DATABASES LIKE ''"
+mysql -u root -p -e "SHOW DATABASES LIKE 'course_management_db'"
 
 Verify Redis:
 redis-cli ping

@@ -7,10 +7,11 @@ const authConfig = {
     refreshSecret: process.env.JWT_REFRESH_SECRET,
     expiresIn: process.env.JWT_EXPIRE || "7d",
     refreshExpiresIn: process.env.JWT_REFRESH_EXPIRE || "30d",
-    issuer: process.env.APP_NAME || "Course Management Platform Summative",
+    issuer: process.env.APP_NAME || "Course Management Platform",
     audience: process.env.APP_URL || "http://localhost:3000",
   },
 
+  // Password Configuration
   password: {
     minLength: 8,
     requireUppercase: true,

@@ -1,5 +1,7 @@
+// tests/testDbConfig.js
 const { Sequelize } = require('sequelize');
 
+// Create a separate test database configuration
 const createTestDatabase = () => {
   const sequelize = new Sequelize(
     process.env.DB_NAME || 'course_management_test',
@@ -9,7 +11,7 @@ const createTestDatabase = () => {
       host: process.env.DB_HOST || 'localhost',
       port: process.env.DB_PORT || 3306,
       dialect: 'mysql',
-      logging: false, 
+      logging: false, // Disable logging in tests
       pool: {
         max: 5,
         min: 0,

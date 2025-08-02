@@ -103,7 +103,6 @@ const seedDatabase = async () => {
     ]);
     logger.info('Modules created');
 
-    // Create Admin User
     const adminUser = await User.create({
       email: 'admin@university.edu',
       password: 'Admin123!',

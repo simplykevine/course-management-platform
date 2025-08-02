@@ -6,6 +6,7 @@ const logDir = 'logs';
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir);
 }
+
 const levels = {
   error: 0,
   warn: 1,

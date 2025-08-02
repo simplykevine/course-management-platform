@@ -145,10 +145,6 @@ const refreshToken = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
-    // In a production environment, you might want to:
-    // 1. Add the token to a blacklist in Redis
-    // 2. Clear any server-side sessions
-    // 3. Log the logout event
     
     logger.info(`User logged out: ${req.user.email}`);
     
