@@ -1,5 +1,9 @@
 Course Management Platform Backend Service
 A robust backend system designed for academic institutions to manage course allocations, monitor facilitator activities, and streamline academic coordination. Features role-based access control, automated notifications, and multilingual support.
+VIDEO:
+
+https://www.loom.com/share/5aba5fe317504ba5aa67096e657691cd?sid=77f2d5c3-df4a-4738-927a-0501de1edb60
+https://www.loom.com/share/b93ca77470dc4f7ea1e729b36f60791e?sid=1d125aa7-51b9-4e75-bfed-294fb52e5c58
 
 🚀 Features
 Core Modules
